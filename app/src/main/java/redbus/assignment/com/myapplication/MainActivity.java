@@ -3,6 +3,8 @@ package redbus.assignment.com.myapplication;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,10 +34,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
 
-    ProgressDialog dialog;
-    RecyclerView recyclerView;
-    VehicleListAdapter vehicleListAdapter;
-    List<InventoryModel.Inventory> datalist;
+    private  ProgressDialog dialog;
+    private RecyclerView recyclerView;
+    private VehicleListAdapter vehicleListAdapter;
+    private List<InventoryModel.Inventory> datalist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,25 +47,35 @@ public class MainActivity extends AppCompatActivity {
         loadToolbar();
         initializeUIComponents();
 
-        /*fetching value from server*/
-        getVehciledetails();
-
+          /*fetching value from server*/
+        if(isOnline(this))
+            getVehciledetails();
+        else
+            Toast.makeText(MainActivity.this,getResources().getString(R.string.no_network),Toast.LENGTH_LONG).show();
     }
 
     private void loadToolbar()
     {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.toolbar_title));
+        try
+        {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            toolbar.setTitle(getResources().getString(R.string.toolbar_title));
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     private  void initializeUIComponents()
     {
         dialog = new ProgressDialog(this);
-        recyclerView = (RecyclerView) findViewById(R.id.listview_vehicle);
+        recyclerView =  findViewById(R.id.listview_vehicle);
 
         /*Initially it wont visible, visible only after data loaded*/
         recyclerView.setVisibility(View.GONE);
@@ -97,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
                             recyclerView.setAdapter(vehicleListAdapter);
                         }
                         else
-                            Toast.makeText(MainActivity.this,getResources().getString(R.string.no_data),Toast.LENGTH_LONG);
+                            Toast.makeText(MainActivity.this,getResources().getString(R.string.no_data),Toast.LENGTH_LONG).show();
 
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(MainActivity.this,getResources().getString(R.string.server_error),Toast.LENGTH_LONG);
+                        Toast.makeText(MainActivity.this,getResources().getString(R.string.server_error),Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -112,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<InventoryModel> call, Throwable t) {
                 dialog.cancel();
                 call.cancel();
-                Toast.makeText(MainActivity.this,getResources().getString(R.string.server_error),Toast.LENGTH_LONG);
+                Toast.makeText(MainActivity.this,getResources().getString(R.string.server_error),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -126,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.action_filter:
 
+                if(isOnline(this))
+                {
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
                 LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View dialogView = inflater.inflate(R.layout.sort_alert_dialog, null);
@@ -134,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
 
                 final AlertDialog dialog = dialogBuilder.create();
 
-                final RadioGroup rgrp = (RadioGroup) dialogView.findViewById(R.id.rgrp_sort);
-                Button btn_ok = (Button) dialogView.findViewById(R.id.btn_ok);
-                Button btn_cancel = (Button) dialogView.findViewById(R.id.btn_cancel);
+                final RadioGroup rgrp =  dialogView.findViewById(R.id.rgrp_sort);
+                Button btn_ok =  dialogView.findViewById(R.id.btn_ok);
+                Button btn_cancel =  dialogView.findViewById(R.id.btn_cancel);
 
                 btn_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -145,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
                         int rgrpid=rgrp.getCheckedRadioButtonId();
 
-                        RadioButton radioButton = (RadioButton)dialogView. findViewById(rgrpid);
+                        RadioButton radioButton = dialogView. findViewById(rgrpid);
 
                         /*Sorting based on selected value*/
                         if(Integer.parseInt(radioButton.getTag().toString()) == 1)
@@ -167,6 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 dialog.show();
+            }
+            else
+                Toast.makeText(MainActivity.this,getResources().getString(R.string.no_network),Toast.LENGTH_LONG).show();
+
+
 
                 return true;
             default:
@@ -180,5 +199,14 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager
+                cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null
+                && activeNetwork.isConnectedOrConnecting();
+    }
+
 
 }
