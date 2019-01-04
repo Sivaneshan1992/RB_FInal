@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="redbus.assignment.com.myapplication.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        app:titleTextColor="@color/colorWhite"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolbarTheme"
+        android:background="?attr/colorPrimary"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/txt_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_place_black_24dp"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/wakad_to_andheri"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_place_black_24dp" />
+
+            <TextView
+                android:id="@+id/txt_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/txt_change"
+                android:textColor="@color/colorBlue"
+                android:layout_alignParentEnd="true"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="05dp"
+            android:text="@string/bus_arrives_in"
+            android:textColor="@color/colorDarkGrey"
+            android:layout_marginEnd="10dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listview_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="02dp"
+            tools:listitem="@layout/container_item_layout" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

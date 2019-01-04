@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <RadioGroup
+        android:id="@+id/rgrp_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        
+        <RadioButton
+            android:id="@+id/rbtn_sortbyfare"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:tag="1"
+            android:text="@string/sort_by_fare"/>
+
+        <RadioButton
+            android:id="@+id/rbtn_sortbydistance"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:tag="2"
+            android:text="@string/sort_by_distance"/>
+        
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_below="@+id/rgrp_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_cancel"
+            android:textAllCaps="false"
+            android:layout_marginLeft="05dp"
+            android:layout_marginBottom="05dp"
+            android:background="@color/colorWhite"
+            android:textColor="@color/colorBlack"/>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_ok"
+            android:textAllCaps="false"
+            android:layout_marginLeft="05dp"
+            android:layout_marginRight="05dp"
+            android:layout_marginBottom="05dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

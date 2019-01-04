@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">My Application</string>
+
+    <string name="app_name">redBus Search</string>
+
+
+    <!--Home page Strings-->
+
+    <string name="txt_change">Change</string>
+    <string name="toolbar_title">Buses leaving in next 1hr</string>
+    <string name="sort">Sort</string>
+    <string name="sort_by_fare">sort by fare    </string>
+    <string name="sort_by_distance">sort by duration</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_ok">Ok</string>
+    <string name="no_data">No data available</string>
+    <string name="wakad_to_andheri">Wakad to Andheri</string>
+    <string name="bus_arrives_in">Bus arrives in</string>
+    <string name="server_error">Server error</string>
+
+
+    <!--Adapter page strings-->
+
+    <string name="symbol_rupee">₹</string>
+    <string name="hrs">Hrs</string>
+    <string name="min">mins</string>
+    <string name="duration">Duration : </string>
+    <string name="ratings">ratings</string>
+    <string name="seatsleft">seats left</string>
+    <string name="only">only</string>
+
+
 </resources>
