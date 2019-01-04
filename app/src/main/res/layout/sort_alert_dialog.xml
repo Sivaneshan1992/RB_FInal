@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     
@@ -43,7 +44,9 @@
             android:layout_marginLeft="05dp"
             android:layout_marginBottom="05dp"
             android:background="@color/colorWhite"
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="05dp"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btn_ok"
@@ -56,7 +59,8 @@
             android:layout_marginRight="05dp"
             android:layout_marginBottom="05dp"
             android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 

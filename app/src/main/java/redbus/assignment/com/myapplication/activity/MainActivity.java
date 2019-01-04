@@ -1,4 +1,4 @@
-package redbus.assignment.com.myapplication;
+package redbus.assignment.com.myapplication.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -22,8 +22,10 @@ import android.widget.Toast;
 import java.util.Collections;
 import java.util.List;
 
+import redbus.assignment.com.myapplication.R;
 import redbus.assignment.com.myapplication.Utils.SortDuration;
 import redbus.assignment.com.myapplication.Utils.SortFare;
+import redbus.assignment.com.myapplication.adapter.VehicleListAdapter;
 import redbus.assignment.com.myapplication.modelclass.InventoryModel;
 import redbus.assignment.com.myapplication.retrofit.APIClient;
 import redbus.assignment.com.myapplication.retrofit.APIInterface;

@@ -1,4 +1,4 @@
-package redbus.assignment.com.myapplication;
+package redbus.assignment.com.myapplication.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import redbus.assignment.com.myapplication.R;
 import redbus.assignment.com.myapplication.modelclass.InventoryModel;
 
 /**
@@ -68,7 +69,7 @@ public class VehicleListAdapter extends RecyclerView.Adapter<VehicleListAdapter.
     static class ItemHolder extends RecyclerView.ViewHolder {
 
 
-        private TextView busarrivetime, starttime, travelsname, vehiclenumber, bustype, reachtime, avgrating,
+        private  TextView busarrivetime, starttime, travelsname, vehiclenumber, bustype, reachtime, avgrating,
                 totalrating, seatsleft, basefare;
 
         static ItemHolder newInstance(ViewGroup container) {
@@ -149,7 +150,7 @@ public class VehicleListAdapter extends RecyclerView.Adapter<VehicleListAdapter.
     /*Filtering data based on duration and fare*/
     public void refreshdata(List<InventoryModel.Inventory> inventory) {
         if (inventory != null && inventory.size() > 0) {
-            inventoryModel = inventoryModel;
+            this.inventoryModel = inventoryModel;
             notifyDataSetChanged();
         }
 

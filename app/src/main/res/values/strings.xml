@@ -11,11 +11,13 @@
     <string name="sort_by_fare">sort by fare    </string>
     <string name="sort_by_distance">sort by duration</string>
     <string name="btn_cancel">Cancel</string>
-    <string name="btn_ok">Ok</string>
+    <string name="btn_ok">OK</string>
     <string name="no_data">No data available</string>
     <string name="wakad_to_andheri">Wakad to Andheri</string>
     <string name="bus_arrives_in">Bus arrives in</string>
     <string name="server_error">Server error</string>
+    <string name="no_network">Network not available</string>
+    <string name="point_to_point_icon">point to point icon</string>
 
 
     <!--Adapter page strings-->
