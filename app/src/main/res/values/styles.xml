@@ -6,8 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-       <!-- <item name="android:actionButtonStyle">@style/myActionButtonStyle</item>
-    <item name="actionButtonStyle">@style/myActionButtonStyle</item>-->
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -15,12 +13,5 @@
         <item name="colorControlNormal">@color/colorWhite</item>
     </style>
 
-  <!--  <style name="myActionButtonStyle" parent="Widget.AppCompat.ActionButton">
-        <item name="android:minWidth">30dp</item>
-        <item name="android:maxWidth">43dp</item>
-        <item name="android:minHeight">30dp</item>
-        <item name="android:maxHeight">48dp</item>
-        <item name="android:width">38dp</item>
-        <item name="android:paddingRight">20dp</item>
-    </style>-->
+
 </resources>
